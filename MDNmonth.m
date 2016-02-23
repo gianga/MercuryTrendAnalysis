@@ -9,37 +9,17 @@ GreatLakesMDN
 %Change site name to desired site
 [taubsea tausea Sens h sig sigAdj Zs Zmod Ss Sigmas CIlower CIupper] = sktt(WI08dep, 0.05, 1)
 
-%% Plotting 2013 averages at all sites
-k = 0:11;
-figure;
-subplot(3,3,1);
-plot(k,MDN00mn(:,36));
-title('MDN00');
-subplot(3,3,2);
-plot(k,MDN01mn(:,36));
-title('MDN01');
-subplot(3,3,3);
-plot(k,MDN02mn(:,36));
-title('MDN02');
-subplot(3,3,4);
-plot(k,MDN04mn(:,36));
-title('MDN04');
-subplot(3,3,5);
-plot(k,MDN09mn(:,36));
-title('MDN09');
-subplot(3,3,6);
-plot(k,MDN20mn(:,36));
-title('MDN20');
-subplot(3,3,7);
-plot(k,MDN43mn(:,36));
-title('MDN43');
-subplot(3,3,8);
-plot(k,MDN96mn(:,36));
-title('MDN96');
-subplot(3,3,9);
-plot(k,MDN98mn(:,36));
-title('MDN98');
+
 %% Great Lakes by year
+% Plot sites by year in groups of 10
+% Data structure is [date1,pre1,con1,dep1,date2,pre2...] where date1 is the
+% date vector for year 1, 1996
+% To plot date vs precipitation, plot 4*n-3 vs 4*n-2, where n is the year
+% you want to plot - 1996
+% To plot date vs concentration, plot 4*n-3 vs 4*n-1, where n is the year
+% you want to plot - 1996
+% To plot date vs deposition, plot 4*n-3 vs 4*n, where n is the year you
+% want to plot - 1996
 ylimit = 200;
 
 figure;
@@ -336,11 +316,3 @@ xlabel('Date');
 ylabel('HGDEP [pg/m^3]');
 ylim ([0 ylimit]);
 title('ON07');
-
-%% Medians for 1996-2000
-WI08_96 = zeros(1830,1);
-WI08_96(1:366) = WI08dy(:,3);
-WI08_96(367:732) = WI08dy(:,7); 
-WI08_96(733:1098) = WI08dy(:,11);
-WI08_96(1099:1464) = WI08dy(:,15);
-WI08_96(1465:1830) = WI08dy(:,19);
